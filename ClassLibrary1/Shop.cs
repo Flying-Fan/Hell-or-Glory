@@ -50,6 +50,9 @@ namespace ShopNS
                         totalNewOrleans=totalNewOrleans + PurchaseList[i].Quantity;
                         break;
 
+                    default:
+                        throw new System.InvalidOperationException("Unknown Blend");
+
                 }
 
             }
@@ -58,8 +61,8 @@ namespace ShopNS
             //if (totalFullCity == totalVienna && totalVienna == totalHullHill && totalHullHill == totalNewOrleans)
             //{
             //    //All of them
-
             //}
+
             if (totalFullCity > totalVienna && totalFullCity > totalHullHill && totalFullCity > totalNewOrleans)
             {
                 MostPopBlend = "Full-City Roast";

@@ -15,7 +15,9 @@ namespace Hell_or_Glory_Test_Harness
         {
             List<Drink> DrinkList = new List<Drink>();
             System.IO.StreamReader csvDrinksIn = null;
-            csvDrinksIn = new System.IO.StreamReader("C:\\Users\\Matthew Summerbell\\source\\repos\\Hell or Glory Test Harness\\Hell or Glory Test Harness\\Coffee shop price list.csv");
+            //Enter Drink Filename Here
+            string DrinkFile = "C:\\Users\\Matthew Summerbell\\source\\repos\\Hell or Glory\\Hell or Glory Test Harness\\Coffee shop price list.csv";
+            csvDrinksIn = new System.IO.StreamReader(DrinkFile);
 
             List<string> Drinks = new List<string>();
             List<string> Prices = new List<string>();
@@ -60,7 +62,9 @@ namespace Hell_or_Glory_Test_Harness
             List<Purchase> PurchaseList = new List<Purchase>();
 
             System.IO.StreamReader csvPurchasesIn = null;
-            csvPurchasesIn = new System.IO.StreamReader("C:\\Users\\Matthew Summerbell\\source\\repos\\Hell or Glory Test Harness\\Hell or Glory Test Harness\\coffee shop monday sales.csv" );
+            //Enter Purchase Filename here
+            string PurchaseFile = "C:\\Users\\Matthew Summerbell\\source\\repos\\Hell or Glory\\Hell or Glory Test Harness\\coffee shop monday sales.csv";
+            csvPurchasesIn = new System.IO.StreamReader(PurchaseFile);
 
             List<string> Drink = new List<string>();
             List<string> Roast = new List<string>();
@@ -128,6 +132,9 @@ namespace Hell_or_Glory_Test_Harness
                         PurchaseList.Add(pWhiteAmericano);
                         break;
 
+                     default:
+                        throw new System.InvalidOperationException("Incorrect Blend");
+                        
                 }
 
             }
@@ -172,15 +179,13 @@ namespace Hell_or_Glory_Test_Harness
             Shop HellOrGlory = new Shop(DrinkList, PurchaseList);
 
             //Assumption number of extras = ExtraTotal + Quantity
-            //string expectedExtra = "Soy";
+            
             List<string> expectedExtra = new List<string>();
             expectedExtra.Add("soy");
             List<string> actualExtra = HellOrGlory.MostPopularExtra();
 
-            //Assert.AreEqual(expectedExtra, actualExtra);
             CollectionAssert.AreEqual(expectedExtra, actualExtra);
-            //collection assert
-
+            
          }
 
          [TestMethod]
